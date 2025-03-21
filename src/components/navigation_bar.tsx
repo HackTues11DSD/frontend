@@ -3,10 +3,14 @@
  * @see https://v0.dev/t/tOnF6UPDszh
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from "@/components/ui/navigation-menu"
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuLink,
+} from "@/components/ui/navigation-menu";
 
 export default function Component() {
   return (
@@ -25,19 +29,39 @@ export default function Component() {
               <span className="sr-only">ShadCN</span>
             </Link>
             <div className="grid gap-2 py-6">
-              <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link
+                href="home"
+                className="flex w-full items-center py-2 text-lg font-semibold"
+                prefetch={false}
+              >
                 Home
               </Link>
-              <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link
+                href="about"
+                className="flex w-full items-center py-2 text-lg font-semibold"
+                prefetch={false}
+              >
                 About
               </Link>
-              <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link
+                href="#"
+                className="flex w-full items-center py-2 text-lg font-semibold"
+                prefetch={false}
+              >
                 Services
               </Link>
-              <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link
+                href="#"
+                className="flex w-full items-center py-2 text-lg font-semibold"
+                prefetch={false}
+              >
                 Portfolio
               </Link>
-              <Link href="#" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false}>
+              <Link
+                href="#"
+                className="flex w-full items-center py-2 text-lg font-semibold"
+                prefetch={false}
+              >
                 Contact
               </Link>
             </div>
@@ -51,8 +75,8 @@ export default function Component() {
           <NavigationMenuList>
             <NavigationMenuLink asChild>
               <Link
-                href="#"
-                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-green-500 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                href="home"
+                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50 hover:bg-green-500"
                 prefetch={false}
               >
                 Home
@@ -60,8 +84,8 @@ export default function Component() {
             </NavigationMenuLink>
             <NavigationMenuLink asChild>
               <Link
-                href="#"
-                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-green-500 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                href="about"
+                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50 hover:bg-green-500"
                 prefetch={false}
               >
                 About
@@ -70,7 +94,7 @@ export default function Component() {
             <NavigationMenuLink asChild>
               <Link
                 href="#"
-                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-green-500 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50 hover:bg-green-500"
                 prefetch={false}
               >
                 Services
@@ -79,7 +103,7 @@ export default function Component() {
             <NavigationMenuLink asChild>
               <Link
                 href="#"
-                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-green-500 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50 hover:bg-green-500"
                 prefetch={false}
               >
                 Portfolio
@@ -87,8 +111,8 @@ export default function Component() {
             </NavigationMenuLink>
             <NavigationMenuLink asChild>
               <Link
-                href="#"
-                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-green-500 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
+                href="contact"
+                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50 hover:bg-green-500"
                 prefetch={false}
               >
                 Contact
@@ -97,12 +121,14 @@ export default function Component() {
           </NavigationMenuList>
         </NavigationMenu>
         <div className="ml-auto flex gap-2">
-          <Button variant="outline">Sign in</Button>
+          <Link variant="outline" href="login">
+            Sign in
+          </Link>
           <Button>Sign Up</Button>
         </div>
       </header>
     </div>
-  )
+  );
 }
 
 function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -123,9 +149,8 @@ function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
       <line x1="4" x2="20" y1="6" y2="6" />
       <line x1="4" x2="20" y1="18" y2="18" />
     </svg>
-  )
+  );
 }
-
 
 function ShirtIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -143,5 +168,5 @@ function ShirtIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
     </svg>
-  )
+  );
 }
