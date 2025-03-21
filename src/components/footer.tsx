@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h4 className="text-lg font-semibold mb-4">About HealthGuide</h4>
+            <h4 className="text-lg font-semibold mb-4">About HealthMap</h4>
             <p className="text-green-500">
               Your trusted source for understanding body symptoms and finding
               the right care.
@@ -122,7 +122,7 @@ export default function Footer() {
         <footer>
           <div className="border-t border-green-700 mt-8 pt-6 text-center">
             <p>
-              &copy; {new Date().getFullYear()} HealthGuide. All rights
+              &copy; {new Date().getFullYear()} HealthMap. All rights
               reserved.
             </p>
           </div>
