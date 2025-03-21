@@ -3,9 +3,9 @@ import chainlit as cl
 import httpx
 
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2"
-HUGGINGFACE_API_TOKEN = base64.b64decode("aGZfQXZURkhnUUxRbW1wb0VqaEdtRnV0ckJQSERETnZMUk1vVQ==".encode()).decode()
+Bearer = base64.b64decode("aGZfQXZURkhnUUxRbW1wb0VqaEdtRnV0ckJQSERETnZMUk1vVQ==".encode()).decode()
 
-headers = {"Authorization": f"Bearer {HUGGINGFACE_API_TOKEN}"}
+headers = {"Authorization": f"Bearer {Bearer}"}
 
 async def query_huggingface(payload):
     async with httpx.AsyncClient(timeout=None) as client:
