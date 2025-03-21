@@ -1,0 +1,23 @@
+<!-- public/human-body-outline.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 500">
+  <!-- Head -->
+  <circle cx="105" cy="40" r="30" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Neck -->
+  <line x1="105" y1="70" x2="105" y2="90" stroke="#333" stroke-width="2"/>
+  
+  <!-- Torso -->
+  <path d="M75 90 L75 200 L135 200 L135 90 Z" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Left arm -->
+  <path d="M75 100 L40 150 L35 200" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Right arm -->
+  <path d="M135 100 L170 150 L175 200" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Left leg -->
+  <path d="M85 200 L75 350 L85 400" fill="none" stroke="#333" stroke-width="2"/>
+  
+  <!-- Right leg -->
+  <path d="M125 200 L135 350 L125 400" fill="none" stroke="#333" stroke-width="2"/>
+</svg>
