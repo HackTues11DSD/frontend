@@ -1,3 +1,4 @@
+//page.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -7,6 +8,7 @@ import Image from "next/image";
 import { Tooltip } from "@/components/tooltip";
 import Component from "@/components/navigation_bar";
 import Footer from "@/components/footer";
+import { BodyMap } from "@/components/bodymap/BodyMap";
 
 export function Navigation() {
   return <Component />;
@@ -32,63 +34,6 @@ const HomePage = () => {
   const [selectedPart, setSelectedPart] = useState<BodyPart | null>(null);
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
-  const bodyParts: BodyPart[] = [
-    {
-      id: "head",
-      name: "Head",
-      position: { top: "5%", left: "50%", width: "15%", height: "15%" },
-      conditions: ["Headaches", "Migraines", "Concussion"],
-    },
-    {
-      id: "neck",
-      name: "Neck",
-      position: { top: "15%", left: "50%", width: "12%", height: "8%" },
-      conditions: ["Neck Pain", "Stiffness", "Whiplash"],
-    },
-    {
-      id: "shoulder",
-      name: "Shoulders",
-      position: { top: "22%", left: "50%", width: "28%", height: "8%" },
-      conditions: ["Frozen Shoulder", "Shoulder Pain", "Rotator Cuff Injury"],
-    },
-    {
-      id: "chest",
-      name: "Chest",
-      position: { top: "30%", left: "50%", width: "25%", height: "12%" },
-      conditions: ["Chest Pain", "Shortness of Breath", "Heart Conditions"],
-    },
-    {
-      id: "abdomen",
-      name: "Abdomen",
-      position: { top: "42%", left: "50%", width: "22%", height: "12%" },
-      conditions: ["Abdominal Pain", "Digestive Issues", "Food Poisoning"],
-    },
-    {
-      id: "back",
-      name: "Back",
-      position: { top: "35%", left: "50%", width: "25%", height: "15%" },
-      conditions: ["Back Pain", "Sciatica", "Herniated Disc"],
-    },
-    {
-      id: "arm",
-      name: "Arms",
-      position: { top: "35%", left: "27%", width: "10%", height: "20%" },
-      conditions: ["Arm Pain", "Tennis Elbow", "Carpal Tunnel"],
-    },
-    {
-      id: "leg",
-      name: "Legs",
-      position: { top: "65%", left: "45%", width: "25%", height: "25%" },
-      conditions: ["Leg Pain", "Knee Pain", "Ankle Sprain"],
-    },
-    {
-      id: "foot",
-      name: "Feet",
-      position: { top: "90%", left: "45%", width: "20%", height: "8%" },
-      conditions: ["Foot Pain", "Plantar Fasciitis", "Bunions"],
-    },
-  ];
-
   const handlePartClick = (part: BodyPart) => {
     setSelectedPart(part);
     setTooltipVisible(true);
@@ -101,7 +46,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-green-100">
       <Head>
-        <title>HealthGuide - Understand Your Body Better</title>
+        <title>HealthMap - Understand Your Body Better</title>
         <meta
           name="description"
           content="Learn about symptoms, causes, and treatments for different body parts"
@@ -174,40 +119,13 @@ const HomePage = () => {
 
             {/* Human Body Diagram */}
             <div className="w-full lg:w-2/4 p-4 relative flex justify-center items-center">
-              <div className="relative w-64 h-96 lg:w-80 lg:h-[30rem]">
-                <Image
-                  src="/human-body-outline.svg"
-                  alt="Human Body Diagram"
-                  layout="fill"
-                  objectFit="contain"
+              <div className="flex justify-center items-center w-full h-full" style={{ marginLeft: "0" }}>
+                <BodyMap
+                  onPartClick={handlePartClick}
+                  tooltipVisible={tooltipVisible}
+                  selectedPart={selectedPart}
+                  onCloseTooltip={closeTooltip}
                 />
-
-                {bodyParts.map((part) => (
-                  <div
-                    key={part.id}
-                    className="absolute hover:bg-green-200 hover:bg-opacity-40 rounded-full cursor-pointer transition-all duration-300"
-                    style={{
-                      top: part.position.top,
-                      left: part.position.left,
-                      width: part.position.width,
-                      height: part.position.height,
-                      transform: "translate(-50%, -50%)",
-                    }}
-                    onClick={() => handlePartClick(part)}
-                  />
-                ))}
-
-                {tooltipVisible && selectedPart && (
-                  <Tooltip
-                    title={selectedPart.name}
-                    content={`Common conditions: ${selectedPart.conditions.join(
-                      ", "
-                    )}`}
-                    onClose={closeTooltip}
-                    linkTo={`/body-parts/${selectedPart.id}`}
-                    linkText="Learn More"
-                  />
-                )}
               </div>
             </div>
 
