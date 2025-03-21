@@ -1,9 +1,11 @@
+import base64
 import chainlit as cl
 import httpx
 
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2"
+HUGGINGFACE_API_TOKEN = base64.b64decode("aGZfQXZURkhnUUxRbW1wb0VqaEdtRnV0ckJQSERETnZMUk1vVQ==".encode()).decode()
 
-headers = {"Authorization": f"Bearer"}
+headers = {"Authorization": f"Bearer {HUGGINGFACE_API_TOKEN}"}
 
 async def query_huggingface(payload):
     async with httpx.AsyncClient(timeout=None) as client:
@@ -18,10 +20,21 @@ async def on_chat_start():
 
 @cl.on_message
 async def main(message: cl.Message):
+    payload = {
+        "inputs": message.content,
+        "parameters": {
+            "max_new_tokens": 150,  # Controls response length
+            "temperature": 0.5,  # Adjusts randomness in output
+            "top_p": 0.9,  # Nucleus sampling for diversity
+            "repetition_penalty": 1.1,  # Discourages repeated phrases
+        },
+        "options": {"wait_for_model": True}  # Ensures model is ready before generating
+    }
+
     msg = await cl.Message(content="").send()
 
     try:
-        data = await query_huggingface({"inputs": message.content})
+        data = await query_huggingface(payload=payload)
         if isinstance(data, dict) and data.get("error"):
             msg.content = f"Error: {data['error']}"
         else:
