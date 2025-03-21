@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { Tooltip } from "../../components/tooltip";
+import { Tooltip } from "@/components/tooltip";
 import Component from "@/components/navigation_bar";
 import Footer from "@/components/footer";
 
