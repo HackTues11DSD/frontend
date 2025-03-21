@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Card,
@@ -15,8 +17,26 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import NavigationBar from "@/components/navigation_bar";
 
+interface Treatment {
+  name: string;
+  description: string;
+  examples: string[];
+  common_uses: string;
+}
+
+interface TreatmentCategory {
+  id: string;
+  name: string;
+  treatments: Treatment[];
+}
+
+interface TreatmentSummaryResponse {
+  extract?: string;
+  title?: string;
+}
+
 const TreatmentsPage = () => {
-  const treatmentCategories = [
+  const treatmentCategories: TreatmentCategory[] = [
     {
       id: "medications",
       name: "Medications",
@@ -397,37 +417,37 @@ const TreatmentsPage = () => {
   >(null);
   const [summary, setSummary] = React.useState("");
 
-  interface TreatmentSummaryResponse {
-    extract?: string;
-  }
-
-  async function handleLearnMore(treatmentName: string): Promise<void> {
-    if (expandedTreatment === treatmentName) {
+  async function handleLearnMore(treatment: Treatment): Promise<void> {
+    if (expandedTreatment === treatment.name) {
       setExpandedTreatment(null);
       setSummary("");
       return;
     }
-    setExpandedTreatment(treatmentName);
+    setExpandedTreatment(treatment.name);
     setSummary("Loading summary...");
 
     try {
       const response = await fetch(
         `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
-          treatmentName
+          treatment.name
         )}`
       );
+      if (!response.ok) {
+        // If response is not ok, show message
+        setSummary("There is no information for this treatment.");
+        return;
+      }
       const data: TreatmentSummaryResponse = await response.json();
-      setSummary(data.extract || "No summary available.");
+      if (data.title === "Not found." || !data.extract) {
+        setSummary("There is no information for this treatment.");
+      } else {
+        setSummary(data.extract);
+      }
     } catch (error) {
-      setSummary(
-        `Error loading summary: ${
-          error instanceof Error ? error.message : "Unknown error"
-        }`
-      );
+      setSummary("There is no information for this treatment.");
     }
   }
 
-  // Filter treatments based on search term
   const filteredCategories = treatmentCategories
     .map((category) => ({
       ...category,
@@ -535,7 +555,7 @@ const TreatmentsPage = () => {
                         <Button
                           variant="outline"
                           className="text-green-700 border-green-300 hover:bg-green-100 hover:text-green-800"
-                          onClick={() => handleLearnMore(treatment.name)}
+                          onClick={() => handleLearnMore(treatment)}
                         >
                           Learn More
                         </Button>
