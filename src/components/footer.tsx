@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h4 className="text-lg font-semibold mb-4">About HealthGuide</h4>
+            <h4 className="text-lg font-semibold mb-4">About HealthMap</h4>
             <p className="text-green-500">
               Your trusted source for understanding body symptoms and finding
               the right care.

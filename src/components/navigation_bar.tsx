@@ -149,7 +149,9 @@ export default function Component() {
           <Link href="/login">
             <Button variant="outline">Sign in</Button>
           </Link>
+          <Link href="/signup">
           <Button>Sign Up</Button>
+          </Link>
         </div>
       </header>
     </div>
