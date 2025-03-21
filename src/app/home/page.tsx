@@ -99,7 +99,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b  to-green-100">
+    <div className="min-h-screen bg-gradient-to-b from-white to-green-100">
       <Head>
         <title>HealthGuide - Understand Your Body Better</title>
         <meta
@@ -174,7 +174,7 @@ const HomePage = () => {
 
             {/* Human Body Diagram */}
             <div className="w-full lg:w-2/4 p-4 relative flex justify-center items-center">
-              <div className="relative w-64 h-96 lg:w-80 lg:h-120">
+              <div className="relative w-64 h-96 lg:w-80 lg:h-[30rem]">
                 <Image
                   src="/human-body-outline.svg"
                   alt="Human Body Diagram"
@@ -219,8 +219,9 @@ const HomePage = () => {
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="/search-symptoms"
-                    className="flex items-center p-2 hover:bg-green-100 rounded"
+                    href="/treatments"
+                    className="flex items-center p-2 hover:bg-green-100 rounded
+                               transform transition-transform duration-300 hover:scale-105"
                   >
                     <svg
                       className="w-5 h-5 mr-2 text-green-600"
@@ -242,7 +243,8 @@ const HomePage = () => {
                 <li>
                   <Link
                     href="/find-doctors"
-                    className="flex items-center p-2 hover:bg-green-100 rounded"
+                    className="flex items-center p-2 hover:bg-green-100 rounded
+                               transform transition-transform duration-300 hover:scale-105"
                   >
                     <svg
                       className="w-5 h-5 mr-2 text-green-600"
@@ -264,7 +266,8 @@ const HomePage = () => {
                 <li>
                   <Link
                     href="/emergency"
-                    className="flex items-center p-2 hover:bg-green-100 rounded"
+                    className="flex items-center p-2 hover:bg-green-100 rounded
+                               transform transition-transform duration-300 hover:scale-105"
                   >
                     <svg
                       className="w-5 h-5 mr-2 text-green-600"
@@ -286,7 +289,8 @@ const HomePage = () => {
                 <li>
                   <Link
                     href="/appointment"
-                    className="flex items-center p-2 hover:bg-green-100 rounded"
+                    className="flex items-center p-2 hover:bg-green-100 rounded
+                               transform transition-transform duration-300 hover:scale-105"
                   >
                     <svg
                       className="w-5 h-5 mr-2 text-green-600"
@@ -312,7 +316,7 @@ const HomePage = () => {
 
         {/* Features Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
+          <div className="bg-white p-6 rounded-xl shadow-md text-center transform transition-transform duration-300 hover:scale-105">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
                 className="w-8 h-8 text-green-600"
@@ -335,7 +339,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
+          <div className="bg-white p-6 rounded-xl shadow-md text-center transform transition-transform duration-300 hover:scale-105">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
                 className="w-8 h-8 text-green-600"
@@ -358,7 +362,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md text-center">
+          <div className="bg-white p-6 rounded-xl shadow-md text-center transform transition-transform duration-300 hover:scale-105">
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg
                 className="w-8 h-8 text-green-600"
