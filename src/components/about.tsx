@@ -1,45 +1,47 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function AboutUs() {
   return (
-    <div className="container mx-auto max-w-4xl px-6 py-12">
-      <Card className="shadow-lg rounded-xl bg-white">
-        <CardContent className="p-8 space-y-6">
-          <h1 className="text-4xl font-bold text-center text-green-700">
-            About Us
-          </h1>
-          <Separator className="bg-green-700" />
-          <p className="text-green-600 text-lg text-center">
-            We are a dedicated team committed to helping individuals recover from their injuries.
-            Our mission is to provide the best resources and support for a speedy and effective recovery.
-          </p>
+    <div className="max-w-6xl mx-auto p-6 space-y-12">
+      {/* Hero Section */}
+      <section className="text-center space-y-4 bg-green-50 p-10 rounded-lg">
+        <h1 className="text-4xl font-bold text-green-700">Revolutionizing Health Education</h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          We&apos;re dedicated to making health information accessible and interactive, helping you understand your body better through innovative technology.
+        </p>
+        <div className="flex justify-center space-x-4 mt-4">
+          <span className="text-green-700 font-semibold">50K+ Users</span>
+          <span className="text-green-700 font-semibold">Certified Experts</span>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h2 className="text-2xl font-semibold text-green-700">Our Mission</h2>
-              <p className="text-green-600">
-                To offer comprehensive, user-friendly, and impactful solutions that aid in the recovery process.
-              </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold text-green-700">Our Vision</h2>
-              <p className="text-green-600">
-                To be a leading resource in injury recovery, recognized for our excellence, innovation, and dedication to our users.
-              </p>
-            </div>
-          </div>
-
-          <Separator className="bg-green-700" />
-
-          <div className="text-center">
-            <h2 className="text-2xl font-semibold text-green-700">Join Us</h2>
-            <p className="text-green-600">
-              Want to be part of something amazing? Let’s work together towards a healthier future.
-            </p>
-          </div>
+      {/* Mission Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-semibold">Our Mission</CardTitle>
+        </CardHeader>
+        <CardContent className="text-center">
+          <p>To provide accurate, accessible, and interactive health education that empowers individuals to make informed decisions about their well-being.</p>
         </CardContent>
       </Card>
-    </div>
+
+      {/* Key Features */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { title: "Education First", desc: "Delivering medical information in simple and understandable terms." },
+          { title: "Patient-Centered", desc: "Focusing on individualized care and knowledge-sharing." },
+          { title: "Innovation", desc: "Using cutting-edge technology for interactive health education." }
+        ].map((feature, index) => (
+          <Card key={index} className="text-center p-4">
+            <CardHeader>
+              <CardTitle className="text-green-700">{feature.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">{feature.desc}</p>
+            </CardContent>
+          </Card>
+        ))}
+        </div> 
+      </div> 
+
   );
 }
