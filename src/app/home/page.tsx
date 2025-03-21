@@ -219,7 +219,7 @@ const HomePage = () => {
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="/treatments"
+                    href="/symptoms"
                     className="flex items-center p-2 hover:bg-green-100 rounded
                                transform transition-transform duration-300 hover:scale-105"
                   >
