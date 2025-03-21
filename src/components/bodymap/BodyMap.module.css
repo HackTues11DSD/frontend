@@ -94,7 +94,3 @@
 .path {
     transition: transform 0.2s ease-in-out;
 }
-
-.path:hover {
-    transform: scale(1.006);
-}

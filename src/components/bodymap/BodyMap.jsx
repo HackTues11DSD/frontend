@@ -2,6 +2,8 @@ import { useCallback, useMemo, useState } from "react"
 import { getBodyPart } from "./bodyParts"
 import style from "./BodyMap.module.css"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import { createPortal } from 'react-dom';
 
 // eslint-disable-next-line
 const BodyContainer = ({ children }) => (
@@ -10,8 +12,8 @@ const BodyContainer = ({ children }) => (
         height: "450px", // Reduced height
         margin: "20px auto" // Adjusted margin
     }}>
-        <svg 
-            xmlns="http://www.w3.org/2000/svg" 
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 375.42 832.97"
         >
             <g>
@@ -22,36 +24,58 @@ const BodyContainer = ({ children }) => (
 )
 
 // eslint-disable-next-line
-const BodyPart = ({ id, d, fill, onClick, onMouseEnter, onMouseLeave }) => {
+const BodyPart = ({ id, d, name, fill, onClick, onMouseEnter, onMouseLeave }) => {
     const handleClick = () => {
-        onClick(id)
-    }
+        onClick(id);
+    };
 
     const handleMouseEnter = () => {
-        onMouseEnter(id)
-    }
+        onMouseEnter(id);
+    };
 
     const handleMouseLeave = () => {
-        onMouseLeave(id)
-    }
+        onMouseLeave(id);
+    };
+
+    const probableConditions = [
+        "Inflammation",
+        "Muscle strain",
+        "Nerve compression",
+        "Injury",
+    ]; // Example conditions, replace with actual data if available.
 
     return (
-        <path
-            d={d}
-            id={id}
-            onClick={handleClick}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={style.path} // Use the local class
-            style={Object.assign({}, {
-                WebkitTapHighlightColor: "transparent",
-                cursor: "pointer"
-            }, { fill })}
-        />
-    )
+        <Popover>
+            <PopoverTrigger asChild>
+                <path
+                    d={d}
+                    id={id}
+                    onClick={handleClick}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className={style.path} // Use the local class
+                    style={Object.assign({}, {
+                        WebkitTapHighlightColor: "transparent",
+                        cursor: "pointer"
+                    }, { fill })}
+                />
+            </PopoverTrigger>
+            {createPortal(
+                <PopoverContent>
+                    <h3 className="text-lg font-bold">{name}</h3>
+                    <ul className="list-disc pl-5">
+                        {probableConditions.map((condition, index) => (
+                            <li key={index}>{condition}</li>
+                        ))}
+                    </ul>
+                </PopoverContent>,
+                document.body
+            )}
+        </Popover>
+    );
 }
 
-export const BodyMap = () => {
+export const BodyMap = ({ onPartClick }) => {
     const [lang, setLang] = useState("en")
     const [clicked, setClicked] = useState(null)
     const [hovered, setHovered] = useState(null)
@@ -76,7 +100,19 @@ export const BodyMap = () => {
     }
 
     const handleClick = (id) => {
-        setClicked(id)
+        setClicked(id);
+        const part = getBodyPart(lang).find((d) => d.id === id);
+        if (part) {
+            onPartClick({
+                id: part.id,
+                name: part.name,
+                conditions: ["Condition 1", "Condition 2"],
+                position: {
+                    top: `${Math.random() * 100}px`, // Replace with actual logic
+                    left: `${Math.random() * 100}px`, // Replace with actual logic
+                },
+            });
+        }
     }
 
     const handleMouseEnter = (id) => {
@@ -104,6 +140,7 @@ export const BodyMap = () => {
                                     key={index}
                                     id={bodyPart.id}
                                     d={bodyPart.d}
+                                    name={bodyPart.name}
                                     fill={getFill(bodyPart.id)}
                                     onClick={handleClick}
                                     onMouseEnter={handleMouseEnter}

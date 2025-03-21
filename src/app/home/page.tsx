@@ -9,6 +9,7 @@ import { Tooltip } from "@/components/tooltip";
 import Component from "@/components/navigation_bar";
 import Footer from "@/components/footer";
 import { BodyMap } from "@/components/bodymap/BodyMap";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export function Navigation() {
   return <Component />;
@@ -32,15 +33,9 @@ interface BodyPart {
 
 const HomePage = () => {
   const [selectedPart, setSelectedPart] = useState<BodyPart | null>(null);
-  const [tooltipVisible, setTooltipVisible] = useState(false);
 
   const handlePartClick = (part: BodyPart) => {
     setSelectedPart(part);
-    setTooltipVisible(true);
-  };
-
-  const closeTooltip = () => {
-    setTooltipVisible(false);
   };
 
   return (
@@ -120,12 +115,23 @@ const HomePage = () => {
             {/* Human Body Diagram */}
             <div className="w-full lg:w-2/4 p-4 relative flex justify-center items-center">
               <div className="flex justify-center items-center w-full h-full" style={{ marginLeft: "0" }}>
-                <BodyMap
-                  onPartClick={handlePartClick}
-                  tooltipVisible={tooltipVisible}
-                  selectedPart={selectedPart}
-                  onCloseTooltip={closeTooltip}
-                />
+
+                      <BodyMap onPartClick={handlePartClick} />
+
+                  {/* <PopoverContent>
+                    {selectedPart ? (
+                      <div>
+                        <h3 className="text-lg font-bold">{selectedPart.name}</h3>
+                        <ul className="list-disc pl-5">
+                          {selectedPart.conditions.map((condition, index) => (
+                            <li key={index}>{condition}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <p>Select a body part to see details.</p>
+                    )}
+                  </PopoverContent> */}
               </div>
             </div>
 
