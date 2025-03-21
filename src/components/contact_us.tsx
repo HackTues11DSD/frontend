@@ -1,13 +1,11 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 
 export default function ContactUsPage() {
   return (
@@ -92,85 +90,6 @@ export default function ContactUsPage() {
           </div>
         </div>
       </main>
-
-      {/* -- FOOTER -- */}
-      <footer className="bg-gray-50 py-8">
-        <div className="container mx-auto px-4">
-          {/* Top Footer Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Footer Column 1 */}
-            <div>
-              <h2 className="text-xl font-bold text-green-700">HealthGuide</h2>
-              <p className="text-gray-600 mt-2">
-                Your trusted source for health information and guidance.
-              </p>
-            </div>
-
-            {/* Footer Column 2 */}
-            <div>
-              <h2 className="text-lg font-semibold text-green-700">
-                Quick Links
-              </h2>
-              <ul className="mt-2 space-y-1 text-gray-600">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <Link href="/symptoms">Symptoms</Link>
-                </li>
-                <li>
-                  <Link href="/treatments">Treatments</Link>
-                </li>
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Footer Column 3 */}
-            <div>
-              <h2 className="text-lg font-semibold text-green-700">
-                Resources
-              </h2>
-              <ul className="mt-2 space-y-1 text-gray-600">
-                <li>
-                  <Link href="#">Medical FAQs</Link>
-                </li>
-                <li>
-                  <Link href="#">Blog</Link>
-                </li>
-                <li>
-                  <Link href="#">Community Forum</Link>
-                </li>
-                <li>
-                  <Link href="#">Support</Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Footer Column 4 */}
-            <div>
-              <h2 className="text-lg font-semibold text-green-700">
-                Newsletter
-              </h2>
-              <p className="text-gray-600 mt-2">
-                Subscribe to our newsletter for health tips and updates.
-              </p>
-              <div className="mt-2 flex space-x-2">
-                <Input placeholder="Enter your email" />
-                <Button>Subscribe</Button>
-              </div>
-            </div>
-          </div>
-
-          <Separator className="my-8" />
-
-          {/* Bottom Footer Text */}
-          <div className="text-center text-gray-500 text-sm">
-            © 2025 HealthGuide. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
