@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <div>
       <Component />
-      <div style={{ width: "100%", height: "100vh" }}>
+      <div style={{ width: "100%", height: "90vh" }}>
         <iframe
           src="http://localhost:8000"
           title="Chat Interface"
