@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ContactUsPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="w-full min-h-screen bg-gradient-to-b from-white to-green-100 p-6 space-y-12">
       {/* -- MAIN CONTENT -- */}
       <main className="container mx-auto px-4 py-8 flex-grow">
         {/* Page Heading */}
