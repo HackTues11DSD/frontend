@@ -275,9 +275,157 @@ const TreatmentsPage = () => {
         },
       ],
     },
+    {
+      id: "viruses",
+      name: "Viruses",
+      treatments: [
+        {
+          name: "Influenza virus",
+          description: "A contagious respiratory illness causing seasonal flu.",
+          examples: ["Flu"],
+          common_uses: "Seasonal flu outbreaks",
+        },
+        {
+          name: "Coronavirus",
+          description:
+            "A family of viruses that can cause illnesses ranging from the common cold to severe diseases such as COVID-19.",
+          examples: ["SARS-CoV-2"],
+          common_uses: "COVID-19 pandemic",
+        },
+        {
+          name: "Ebola virus",
+          description: "A rare but deadly virus that causes hemorrhagic fever.",
+          examples: ["Ebola"],
+          common_uses: "Ebola outbreaks",
+        },
+        {
+          name: "HIV",
+          description:
+            "Human Immunodeficiency Virus that causes AIDS by attacking the immune system.",
+          examples: ["HIV-1", "HIV-2"],
+          common_uses: "Chronic immunodeficiency",
+        },
+        {
+          name: "Herpes simplex virus",
+          description: "A virus that causes oral and genital herpes.",
+          examples: ["HSV-1", "HSV-2"],
+          common_uses: "Herpes infections",
+        },
+        {
+          name: "Hepatitis B virus",
+          description:
+            "A virus that causes Hepatitis B, an infection that affects the liver.",
+          examples: ["HBV"],
+          common_uses: "Liver infection",
+        },
+        {
+          name: "Hepatitis C virus",
+          description:
+            "A virus that causes Hepatitis C, another form of liver infection.",
+          examples: ["HCV"],
+          common_uses: "Liver infection",
+        },
+        {
+          name: "Rhinovirus",
+          description:
+            "The most common viral infectious agent in humans, primarily causing the common cold.",
+          examples: ["Cold virus"],
+          common_uses: "Common cold",
+        },
+        {
+          name: "Respiratory syncytial virus",
+          description:
+            "A virus that causes respiratory tract infections, especially in young children.",
+          examples: ["RSV"],
+          common_uses: "Bronchiolitis",
+        },
+        {
+          name: "Zika virus",
+          description:
+            "A mosquito-borne virus that can cause birth defects in newborns.",
+          examples: ["Zika"],
+          common_uses: "Zika fever",
+        },
+        {
+          name: "Dengue virus",
+          description:
+            "A virus transmitted by mosquitoes that causes dengue fever.",
+          examples: ["Dengue"],
+          common_uses: "Dengue fever",
+        },
+        {
+          name: "Poliovirus",
+          description:
+            "The virus that causes poliomyelitis (polio), a disease that can lead to paralysis.",
+          examples: ["Polio"],
+          common_uses: "Polio",
+        },
+        {
+          name: "Norovirus",
+          description:
+            "A virus that causes gastroenteritis and is often associated with outbreaks in confined settings.",
+          examples: ["Stomach flu"],
+          common_uses: "Gastroenteritis",
+        },
+        {
+          name: "Papillomavirus",
+          description:
+            "A virus linked to skin warts and various cancers, including cervical cancer.",
+          examples: ["HPV"],
+          common_uses: "Cervical cancer",
+        },
+        {
+          name: "Varicella-zoster virus",
+          description: "The virus responsible for chickenpox and shingles.",
+          examples: ["Chickenpox", "Shingles"],
+          common_uses: "Chickenpox and shingles",
+        },
+        {
+          name: "Cytomegalovirus",
+          description:
+            "A common virus that can be dangerous for immunocompromised individuals.",
+          examples: ["CMV"],
+          common_uses: "Infections in immunocompromised",
+        },
+      ],
+    },
   ];
 
   const [searchTerm, setSearchTerm] = React.useState("");
+  const [expandedTreatment, setExpandedTreatment] = React.useState<
+    string | null
+  >(null);
+  const [summary, setSummary] = React.useState("");
+
+  interface TreatmentSummaryResponse {
+    extract?: string;
+  }
+
+  async function handleLearnMore(treatmentName: string): Promise<void> {
+    if (expandedTreatment === treatmentName) {
+      setExpandedTreatment(null);
+      setSummary("");
+      return;
+    }
+    setExpandedTreatment(treatmentName);
+    setSummary("Loading summary...");
+
+    try {
+      const response = await fetch(
+        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+          treatmentName
+        )}`
+      );
+      const data: TreatmentSummaryResponse = await response.json();
+      setSummary(data.extract || "No summary available.");
+    } catch (error) {
+      setSummary(
+        `Error loading summary: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
+      );
+    }
+  }
 
   // Filter treatments based on search term
   const filteredCategories = treatmentCategories
@@ -387,18 +535,18 @@ const TreatmentsPage = () => {
                         <Button
                           variant="outline"
                           className="text-green-700 border-green-300 hover:bg-green-100 hover:text-green-800"
-                          onClick={() =>
-                            window.open(
-                              `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(
-                                treatment.name
-                              )}`,
-                              "_blank"
-                            )
-                          }
+                          onClick={() => handleLearnMore(treatment.name)}
                         >
                           Learn More
                         </Button>
                       </CardFooter>
+                      {expandedTreatment === treatment.name && (
+                        <div className="p-4 border-t border-green-100 bg-green-50">
+                          <pre className="text-sm whitespace-pre-wrap">
+                            {summary}
+                          </pre>
+                        </div>
+                      )}
                     </Card>
                   ))}
                 </div>
