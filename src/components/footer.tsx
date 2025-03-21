@@ -122,7 +122,7 @@ export default function Footer() {
         <footer>
           <div className="border-t border-green-700 mt-8 pt-6 text-center">
             <p>
-              &copy; {new Date().getFullYear()} HealthGuide. All rights
+              &copy; {new Date().getFullYear()} HealthMap. All rights
               reserved.
             </p>
           </div>
