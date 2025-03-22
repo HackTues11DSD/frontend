@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h3 align="center">Health Map</h3>
 
-## Getting Started
 
-First, run the development server:
+## About The Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Health Map is a web application designed to assist users in self-diagnosing sports injuries and traumas. Built with Tailwind CSS, React, and Django, the platform provides an interactive and user-friendly experience for identifying potential injuries and exploring treatment options.
+Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Interactive Human Body Model: Users can click on a specific body part to indicate where they are experiencing pain.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Symptom Selection: After selecting a body part, users are presented with a list of symptoms to choose from.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Diagnosis Suggestions: Based on the selected symptoms, the app provides a list of possible diagnoses.
 
-## Learn More
+* Treatment Options: Users can explore recommended treatments for their potential injuries.
 
-To learn more about Next.js, take a look at the following resources:
+* Responsive Design: The website is fully responsive and optimized for both desktop and mobile devices.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+Frontend:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* React: A JavaScript library for building user interfaces.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Tailwind CSS: A utility-first CSS framework for rapid UI development.
+
+Backend:
+
+* Django: A high-level Python web framework for building secure and maintainable websites.
+
+Database:
+
+* SQLite
+
+Other Tools:
+
+* Django REST Framework: For building APIs to connect the frontend and backend.
+
+* Axios: For making HTTP requests from the React frontend to the Django backend.
