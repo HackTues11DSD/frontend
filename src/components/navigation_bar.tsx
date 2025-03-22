@@ -1,3 +1,4 @@
+"use client"
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/tOnF6UPDszh
@@ -11,8 +12,12 @@ import {
   NavigationMenuList,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
+import { useUser } from "@/context/user-context";
+import { useRouter } from "next/navigation";
 
 export default function Component() {
+  const{user, setUser}=useUser()
+  const router = useRouter()
   return (
     <div className="container mx-auto px-4 md:px-6 lg:px-8">
       <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
@@ -144,14 +149,33 @@ export default function Component() {
         </NavigationMenu>
 
         {/* Sign in / Sign Up buttons */}
-        <div className="ml-auto flex gap-2">
-          <Link href="/login">
-            <Button variant="outline">Sign in</Button>
-          </Link>
-          <Link href="/signup">
-          <Button>Sign Up</Button>
-          </Link>
-        </div>
+
+
+        {!user ? (
+          <div className="ml-auto flex gap-2">
+            <Link href="/login">
+              <Button variant="outline">Sign in</Button>
+            </Link>
+            <Button>Sign Up</Button>
+          </div>
+        ) : (
+          <div className="ml-auto flex items-center gap-2">
+            <span className="text-sm font-medium">Hello, {user.username}</span>
+            <Button
+              variant="outline"
+              onClick={() => {
+          // Call logout function from user context
+          if (typeof window !== "undefined") {
+            setUser(null)
+            router.push("/login")
+          }
+           
+              }}
+            >
+              Logout
+            </Button>
+          </div>
+        )}
       </header>
     </div>
   );
